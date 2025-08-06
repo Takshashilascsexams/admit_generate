@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamatapur Students Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .clear-btn {
+            padding: 12px 20px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .clear-btn:hover {
+            background: #c82333;
+        }
+
+        .search-info {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #e3f2fd;
+            border-radius: 6px;
+            color: #1976d2;
+            font-size: 14px;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .results-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #e8f5e8;
+            border-radius: 6px;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #343a40;
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.2s ease;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-size: 18px;
+        }
+
+        .status-active {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .status-inactive {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            color: #ffc107;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .search-container {
+                padding: 20px;
+            }
+
+            .search-input {
+                min-width: 100%;
+            }
+
+            .table-container {
+                padding: 20px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kamatapur Students Data</h1>
+            <p>Search and manage student records efficiently</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search by name, contact, alt number, email, or roll number..."
+                >
+                <button class="clear-btn" onclick="clearSearch()">Clear</button>
+            </div>
+            <div class="search-info">
+                You can search by: Student Name, Contact Number, Alternative Number, Email Address, or Roll Number
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="results-info" id="resultsInfo">
+                Showing <span id="resultsCount"><%= students ? students.length : 0 %></span> students
+            </div>
+
+            <table id="studentTable">
+                <thead>
+                    <tr>                        
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Alt Number</th>
+                        <th>Email</th>
+                        <th>Parents Name</th>
+                        <th>Address</th>
+                        <th>DOB</th>  
+                        <th>Roll No</th>                      
+                        <th>Percentage</th>
+                        <th>Qualification</th>
+                        <th>Created Date</th>
+                        <th>Caste</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <% if (students && students.length > 0) { %>
+                        <% students.map(function(student) { %>
+                            <tr>                               
+                                <td><%= student.name %></td>
+                                <td><%= student.contact %></td>
+                                <td><%= student.alt_contact %></td>
+                                <td><%= student.email %></td>
+                                <td><%= student.parent_name %></td>
+                                <td><%= student.address %></td>
+                                <td><%= student.DOB %></td>  
+                                 <td><%= student.rollNo %></td>                              
+                                <td><%= student.percentage_in_degree %></td>
+                                <td><%= student.qualification %></td>
+                                <td><%= student.createdDate %></td>
+                                <td><%= student.caste %></td>
+                            </tr>
+                        <% }); %>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <% if (!students || students.length === 0) { %>
+                <div class="no-results" id="noResults">
+                    No students found in the database.
+                </div>
+            <% } else { %>
+                <div class="no-results" id="noResults" style="display: none;">
+                    No students found matching your search criteria.
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        // Pass student data from server to client-side JavaScript
+        const students = <%- JSON.stringify(students || []) %>;
+        let filteredStudents = [...students];
+
+        // Function to render the table
+        function renderTable(studentsToRender = filteredStudents) {
+            const tableBody = document.getElementById('tableBody');
+            const noResults = document.getElementById('noResults');
+            const resultsCount = document.getElementById('resultsCount');
+
+            if (studentsToRender.length === 0) {
+                tableBody.innerHTML = '';
+                noResults.style.display = 'block';
+                resultsCount.textContent = '0';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            resultsCount.textContent = studentsToRender.length;
+
+            tableBody.innerHTML = studentsToRender.map(student => `
+                <tr>
+                    <td>${escapeHtml(student.name)}</td>
+                    <td>${escapeHtml(student.contact)}</td>
+                    <td>${escapeHtml(student.alt_contact)}</td>
+                    <td>${escapeHtml(student.email)}</td>
+                    <td>${escapeHtml(student.parent_name)}</td>
+                    <td>${escapeHtml(student.address)}</td>
+                    <td>${escapeHtml(student.DOB)}</td>
+                    <td>${escapeHtml(student.rollNo)}</td>
+                    <td>${escapeHtml(student.percentage_in_degree)}</td>
+                    <td>${escapeHtml(student.qualification)}</td>
+                    <td>${escapeHtml(student.createdDate)}</td>
+                    <td>${escapeHtml(student.caste)}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Function to escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Function to search students
+        function searchStudents(query) {
+            if (!query.trim()) {
+                filteredStudents = [...students];
+            } else {
+                const searchTerm = query.toLowerCase().trim();
+                filteredStudents = students.filter(student => 
+                    student.name?.toLowerCase().includes(searchTerm) ||
+                    student.contact?.includes(searchTerm) ||
+                    student.alt_contact?.includes(searchTerm) ||
+                    student.email?.toLowerCase().includes(searchTerm)||
+                    student.rollNo?.toLowerCase().includes(searchTerm)
+                );
+            }
+            renderTable();
+        }
+
+        // Function to clear search
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filteredStudents = [...students];
+            renderTable();
+        }
+
+        // Event listener for search input
+        document.getElementById('searchInput').addEventListener('input', function() {
+            searchStudents(this.value);
+        });
+
+        // Event listener for Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchStudents(this.value);
+            }
+        });
+
+        // Initialize the table on page load (only if we have students data)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (students && students.length > 0) {
+                renderTable();
+            }
+        });
+    </script>
+</body>
+</html>

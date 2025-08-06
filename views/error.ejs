@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Failed - Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .error-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #e9ecef;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-color: #6c757d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        .error-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .error-details {
+            font-size: 14px;
+            color: #868e96;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .error-details ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .error-details li {
+            margin-bottom: 5px;
+        }
+
+        .continue-btn {
+            display: inline-block;
+            background-color: #495057;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #495057;
+            margin: 10px;
+        }
+
+        .continue-btn:hover {
+            background-color: #343a40;
+            border-color: #343a40;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(73, 80, 87, 0.3);
+        }
+
+        .continue-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(73, 80, 87, 0.3);
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: #6c757d;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #6c757d;
+            margin: 10px;
+        }
+
+        .secondary-btn:hover {
+            background-color: #6c757d;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .secondary-btn:active {
+            transform: translateY(0);
+        }
+
+        .additional-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #868e96;
+        }
+
+        .additional-info a {
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .additional-info a:hover {
+            text-decoration: underline;
+        }
+
+        .error-code {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #495057;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        @media (max-width: 600px) {
+            .error-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .error-message {
+                font-size: 15px;
+            }
+
+            .continue-btn,
+            .secondary-btn {
+                display: block;
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+
+        /* Subtle animation */
+        .error-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-icon {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            ⚠️
+        </div>
+        
+        <h1 class="error-title">Login Failed</h1>
+        
+        <p class="error-message">
+            We couldn't log you in with the credentials provided.
+        </p>
+        
+        <div class="error-details">
+            <strong>Possible reasons:</strong>
+            <ul>
+                <li>Incorrect username or password</li>
+                <li>Account may be locked or suspended</li>
+                <li>Session has expired</li>
+                <li>Network connectivity issues</li>
+            </ul>
+        </div>
+
+        <div class="action-buttons">
+            <a href="#" class="continue-btn" onclick="goToLogin()">Continue Login</a>
+            <a href="#" class="secondary-btn" onclick="forgotPassword()">Forgot Password?</a>
+        </div>
+
+        <div class="additional-info">
+            <p>Need help? Contact our <a href="#">support team</a> or check the <a href="#">help center</a>.</p>
+            <div class="error-code">Error Code: AUTH_FAILED_001</div>
+        </div>
+    </div>
+
+    <script>
+        function goToLogin() {
+            // Redirect to login page
+            console.log('Redirecting to login page...');
+            // window.location.href = '/login';
+            alert('Redirecting to login page...');
+        }
+
+        function forgotPassword() {
+            // Redirect to forgot password page
+            console.log('Redirecting to forgot password page...');
+            // window.location.href = '/forgot-password';
+            alert('Redirecting to forgot password page...');
+        }
+
+        // Auto-focus on continue button for better accessibility
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.continue-btn').focus();
+        });
+
+        // Add retry functionality with Enter key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                goToLogin();
+            }
+        });
+    </script>
+</body>
+</html>
