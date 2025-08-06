@@ -104,7 +104,6 @@
         align-items: center;
         justify-content: center;
         margin-top: 1rem;
-    
       }
 
       .signature-placeholder {
@@ -246,6 +245,28 @@
           margin-bottom: 15px;
         }
 
+        .exam-detail-row-main {
+          display: flex;
+          justify-content: space-between;
+          margin-inline: 5rem;
+        }
+
+        .main-title {
+          font-size: 21px;
+        }
+
+        .exam-detail-value {
+          font-size: 13px;
+        }
+
+        .exam-detail-label {
+          font-size: 13px;
+        }
+
+        .admit-card-title {
+          font-size: 20px;
+        }
+
         .detail-label {
           width: auto;
           margin-bottom: 5px;
@@ -259,14 +280,20 @@
           width: auto;
           margin-bottom: 5px;
         }
+        
 
         .authority-signature-section {
           text-align: center;
+          margin-top: 2rem;
         }
 
         .authority-signature-container {
           margin: 0 auto 10px;
+          justify-content: flex-end;
+          width: 100%;
         }
+
+        
       }
     </style>
   </head>
@@ -322,24 +349,30 @@
 
       <div class="exam-details">
         <h3>EXAMINATION DETAILS</h3>
-        <div class="exam-detail-row">
-          <span class="exam-detail-label">Time of Exam :</span>
-          <span class="exam-detail-value">11:00A.M to 1:00 P.M</span>
-        </div>
+        <div class="exam-detail-row-main">
+          <div>
+            <div class="exam-detail-row">
+              <span class="exam-detail-label">Time of Exam :</span>
+              <span class="exam-detail-value">11:00A.M to 1:00 P.M</span>
+            </div>
 
-        <div class="exam-detail-row">
-          <span class="exam-detail-label">Date of Exam :</span>
-          <span class="exam-detail-value">10th August</span>
-        </div>
+            <div class="exam-detail-row">
+              <span class="exam-detail-label">Date of Exam :</span>
+              <span class="exam-detail-value">10th August</span>
+            </div>
+          </div>
 
-        <div class="exam-detail-row">
-          <span class="exam-detail-label">Reporting Time at Centre :</span>
-          <span class="exam-detail-value">10:00 A.M</span>
-        </div>
+          <div>
+            <div class="exam-detail-row">
+              <span class="exam-detail-label">Reporting Time at Centre :</span>
+              <span class="exam-detail-value">10:00 A.M</span>
+            </div>
 
-        <div class="exam-detail-row">
-          <span class="exam-detail-label">Venue :</span>
-          <span class="exam-detail-value">Bongaigaon University</span>
+            <div class="exam-detail-row">
+              <span class="exam-detail-label">Venue :</span>
+              <span class="exam-detail-value">Bongaigaon University</span>
+            </div>
+          </div>
         </div>
       </div>
 
