@@ -92,20 +92,19 @@
 
       .authority-signature-section {
         text-align: right;
-        margin-top: 30px;
+        margin-top: 10px;
         padding-top: 15px;
       }
 
       .authority-signature-container {
-        width: 180px;
+        width: 280px;
         height: 70px;
-        border: 1px solid #000;
         margin-left: auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #f9f9f9;
-        margin-bottom: 8px;
+        margin-top: 1rem;
+    
       }
 
       .signature-placeholder {
@@ -114,9 +113,19 @@
       }
 
       .authority-signature-label {
+        margin-top: 15px;
         font-size: 14px;
+      }
+
+      .authority-signature-label p {
+        font-size: 11px;
+        margin-top: 3px;
+      }
+
+      .authority-signature-label p:first-child {
+        font-size: 12px;
         font-weight: bold;
-        text-align: center;
+        margin-top: 3px;
       }
 
       .detail-row {
@@ -336,23 +345,36 @@
 
       <div class="authority-signature-section">
         <div class="authority-signature-container">
-          <div class="signature-placeholder">Authority Signature</div>
+          <div class="signature-placeholder">
+            <img
+              src="/files/sign.jpg"
+              width="120"
+              height="50"
+              alt=""
+              srcset=""
+            />
+            <div class="authority-signature-label">
+              <p>Aftabur Rahman</p>
+              <p>Civil Services Coaching Programme - 2025</p>
+              <p>Programme Coordinator</p>
+              <p>Takshashila School of Civil Services</p>
+            </div>
+          </div>
         </div>
-        <div class="authority-signature-label">Authorized Signatory</div>
       </div>
     </div>
 
     <div class="download-section">
       <button class="download-btn" onclick="downloadPDF()">
-        📄 Download as PDF (html2pdf)
+        📄 Download Admit
       </button>
-      <button
+      <!-- <button
         class="download-btn"
         onclick="printToPDF()"
         style="background-color: #2196f3; margin-left: 10px"
       >
         🖨️ Print to PDF (Browser)
-      </button>
+      </button> -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
