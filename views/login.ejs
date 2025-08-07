@@ -1,172 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
-        /* CSS STARTS HERE - Copy everything between these comments to styles.css */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* CSS STARTS HERE - Copy everything between these comments to styles.css */
 
-        body {
-            font-family: 'Arial', sans-serif;          
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-family: "Arial", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-container {
+        min-height: 100vh;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .login-header h1 {
+        color: #333;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .login-header p {
+        color: #666;
+        margin-top: 0.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #555;
+        font-weight: 500;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .login-btn:active {
+        transform: translateY(0);
+      }
+
+      .form-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .form-footer a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .form-footer a:hover {
+        text-decoration: underline;
+      }
+
+      .suggest {
+        font-size: 12px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 480px) {
         .login-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
+          margin: 1rem;
+          padding: 1.5rem;
         }
 
         .login-header h1 {
-            color: #333;
-            font-size: 2rem;
-            font-weight: 300;
+          font-size: 1.5rem;
         }
+      }
 
-        .login-header p {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e1e1e1;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .form-footer a {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
-        }
-
-        .suggest {
-            font-size: 12px;
-        }
-
-        /* Responsive design */
-        @media (max-width: 480px) {
-            .login-container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .login-header h1 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* CSS ENDS HERE */
+      /* CSS ENDS HERE */
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="login-container">
-        <div class="login-header">
-            <h1>Welcome Back</h1>
-            <p>Please sign in to your account</p>
-        </div>
-        
-        <form method="post" action="/api/login">
-            <div class="login-form">
-            <div class="form-group">
-                <label for="email">Email <span class="suggest">(Email You have registered)</span></label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password <span class="suggest">(date of birth you have given in the form)</span></label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <button type="submit" class="login-btn">
-                Sign In
-            </button>
-                        
-        </div>
-        </form>
-    </div>
+      <div class="login-header">
+        <h1>Takshashila School of Civil Service</h1>
+        <p>Please sign in to download your admit</p>
+      </div>
 
-    <script>
-        function handleLogin() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // This is where you would typically send the login data to your server
-            alert('Login functionality would be implemented here');
-        }
-    </script>
-</body>
+      <form method="post" action="/api/login">
+        <div class="login-form">
+          <div class="form-group">
+            <label for="email"
+              >Email
+              <span class="suggest"
+                >(Email You have registered exactly)</span
+              ></label
+            >
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password"
+              >Password
+              <span class="suggest"
+                >(date of birth you have given in the form - format ddmmyyyy >
+                09012001)</span
+              ></label
+            >
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <button type="submit" class="login-btn">Sign In</button>
+        </div>
+      </form>
+
+      <div
+        style="
+          background-color: #ffffff;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          padding: 25px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+          width: 100%;
+          margin: 0 auto;
+          position: relative;
+          box-sizing: border-box;
+        "
+      >
+        <!-- Header with icon -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+          "
+        >
+          <div
+            style="
+              width: 24px;
+              height: 24px;
+              background-color: #4285f4;
+              border-radius: 50%;
+              margin-right: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              font-weight: bold;
+              font-size: 14px;
+            "
+          >
+            i
+          </div>
+          <h2
+            style="margin: 0; color: #333333; font-size: 18px; font-weight: 600"
+          >
+            Login Instructions
+          </h2>
+        </div>
+
+        <!-- Content -->
+        <div style="line-height: 1.6; color: #555555">
+          <p style="margin: 0 0 15px 0; font-size: 16px">
+            <strong style="color: #333333">Email:</strong>
+            Please use the same email address as provided in your form
+            registration.
+          </p>
+
+          <p style="margin: 0 0 15px 0; font-size: 16px">
+            <strong style="color: #333333">Password:</strong>
+            Your password is your date of birth in the format:
+            <code
+              style="
+                background-color: #f8f9fa;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+                color: #d63384;
+                font-size: 14px;
+              "
+              >DDMMYYYY</code
+            >
+            (without any spaces and hyphens)
+          </p>
+
+          <div
+            style="
+              background-color: #e7f3ff;
+              border-left: 4px solid #2196f3;
+              padding: 12px 15px;
+              margin-top: 20px;
+              border-radius: 0 4px 4px 0;
+            "
+          >
+            <p style="margin: 0; font-size: 14px; color: #1565c0">
+              <strong>Example:</strong> If your date of birth is January 15,
+              1990, your password would be: <strong>15011990</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Footer note -->
+        <div
+          style="
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eeeeee;
+            text-align: center;
+          "
+        >
+          <p
+            style="
+              margin: 0;
+              font-size: 12px;
+              color: #888888;
+              font-style: italic;
+            "
+          >
+            Having trouble? Contact support for assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
