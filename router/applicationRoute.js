@@ -67,7 +67,7 @@ appRouter.post('/api/register', async (req, res) => {
             const parts = normalized.split('/');
 
             if (parts.length === 3) {
-                let [month, day, year] = parts;
+                let [day, month, year] = parts;
                 day = day.padStart(2, '0');
                 month = month.padStart(2, '0');
                 return `${day}${month}${year}`;
