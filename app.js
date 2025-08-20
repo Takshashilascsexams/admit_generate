@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 // MongoDB Connection
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://panchnan16:6rhNwNY9ZvIjRscz@komotaadmitdb.nmti9vj.mongodb.net/?retryWrites=true&w=majority&appName=komotaAdmitDb');
+        await mongoose.connect('mongodb+srv://panchnan16:6rhNwNY9ZvIjRscz@komotaadmitdb.nmti9vj.mongodb.net/bn_admit?retryWrites=true&w=majority');
         console.log('MongoDB connected successfully');
     } catch (error) {
         console.error('MongoDB connection failed:', error.message);

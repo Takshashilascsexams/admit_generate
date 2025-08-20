@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://panchnan16:6rhNwNY9ZvIjRscz@komotaadmitdb.nmti9vj.mongodb.net/?retryWrites=true&w=majority&appName=komotaAdmitDb');
+        await mongoose.connect('mongodb+srv://panchnan16:6rhNwNY9ZvIjRscz@komotaadmitdb.nmti9vj.mongodb.net/?retryWrites=true&w=majority&appName=komotaAdmitDb/bn_admit');
         console.log('MongoDB connected successfully');
     } catch (error) {
         console.error('MongoDB connection failed:', error.message);

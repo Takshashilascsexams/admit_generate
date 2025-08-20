@@ -1,6 +1,8 @@
 const express = require('express');
 const User = require('../model/student_db'); // Adjust path as needed
 const { importCSVToDatabase } = require('./csvConvert');
+const bnUser = require('../model/bnStudents')
+
 
 const appRouter = express.Router();
 
@@ -9,14 +11,14 @@ appRouter.get('/', (req, res) => {
 });
 
 appRouter.get('/All-users', async (req, res) => {
-    const user = await User.find();
+    const user = await bnUser.find();
     res.render('allUser', { students: user });
 });
 
 appRouter.get('/home', async (req, res) => {
     const { email } = req.query;
     try {
-        const user = await User.findOne({ email });
+        const user = await bnUser.findOne({ email });
 
         if (user) {
             return res.status(200).render(`main`, { user });
@@ -39,9 +41,11 @@ appRouter.get('/error', (req, res) => {
 appRouter.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await User.findOne({ email });
+        const user = await bnUser.findOne({ email });
+        // console.log(user)
 
         if (user && user.password === password) {
+            //  return res.status(200).send({user});
             return res.status(200).redirect(`/home?email=${user.email}`);
         } else {
             console.log('User not found.');
@@ -77,7 +81,7 @@ appRouter.post('/api/register', async (req, res) => {
         })(),
     };
     try {
-        const newUser = new User(cleanedUser);
+        const newUser = new bnUser(cleanedUser);
         await newUser.save();
         return res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
